@@ -98,7 +98,7 @@ function calcularSimulacion(smmlv, minsub, maxsub, tasaInt, edad, tasaSub, tasaS
 	            valorcuota=Math.floor((totalcapital*tasaint)/(1-Math.pow(1+tasaint,(-1*plazo)))*100)/100;
 	            //Determina si aplica subsidio para viviendas VIS
 	            
-	            if ((totalvivienda >= minsubsidio) && (ingFam < (2*salariominimo)){
+	            if ((totalvivienda >= minsubsidio) && (ingFam < (2*salariominimo))){
 						subsidio= Math.round(valorcuota*0.034);	
 				}else if ((ingFam < (2*salariominimo) || ingFam > (4*salariominimo)) && (totalvivienda >= minsubsidio || totalvivienda<=maxsubsidio)){ 
 						subsidio= Math.round(valorcuota*0.034);	

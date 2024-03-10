@@ -3,7 +3,7 @@
      class sesion{
 
       public $mysql_user = 'root';
-      public $mysql_password = '';
+      public $mysql_password = 'uptc2021';
       public $pdo;
 
       public function conexionBD(){

@@ -69,7 +69,7 @@
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 24pt;
 }
--->
+
         </style>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
