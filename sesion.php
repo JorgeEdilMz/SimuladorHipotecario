@@ -2,23 +2,24 @@
 		
      class sesion{
 
-          private $mysql_host = 'localhost';
-          private $mysql_port = '3307';
-          private $mysql_dbname = 'simulador';
-          private $mysql_charset = 'utf8mb4';
-          private $pdo;
-      
-          public function conexionBD($mysql_user, $mysql_password) {
-              try {
-                  $dsn = "mysql:host={$this->mysql_host};port={$this->mysql_port};dbname={$this->mysql_dbname};charset={$this->mysql_charset}";
-                  $this->pdo = new PDO($dsn, $mysql_user, $mysql_password);
-                  $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                  echo "Connected to MySQL successfully!<br>";
-              } catch(PDOException $ex) {
-                  error_log('Error connecting to MySQL: ' . $ex->getMessage());
-                  die('An error occurred while connecting to the database.');
-              }
+          public $mysql_user = 'root';
+          public $mysql_password = 'uptc2021';
+          public $pdo;
+
+          public function conexionBD() {
+               try {
+                    echo "Intentando conectar a MySQL...<br>";
+                    $this->pdo = new PDO('mysql:host=mi-mysql;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
+                    echo "Conexión exitosa a MySQL!<br>";
+                    // Establecer el modo de error PDO en excepción
+                    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+               } catch(PDOException $ex) {
+                    echo 'Error al conectar a MySQL: ' . $ex->getMessage();
+                    die();
+               }
+               return $this->pdo;
           }
+
           public function simulacionesUsuario($user){
                $pdo = $this->conexionBD();
                $stmt = $pdo->prepare('SELECT * FROM simulacion where id_usuario = ?');
