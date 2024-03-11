@@ -14,7 +14,8 @@
               // Establecer el modo de error PDO en excepción
               $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           } catch(PDOException $ex) {
-              die('Error al conectar a MySQL: ' . $ex->getMessage());
+              echo 'Error al conectar a MySQL: ' . $ex->getMessage();
+              die();
           }
           return $this->pdo;
       }
