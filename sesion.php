@@ -8,7 +8,7 @@
 
       public function conexionBD() {
           try {
-              $pdo = new PDO('mysql:host=localhost;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
+              $pdo = new PDO('mysql:host=mi-mysql;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
               // Establecer el modo de error PDO en excepción
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           } catch(PDOException $ex) {
