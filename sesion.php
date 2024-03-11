@@ -6,14 +6,16 @@
       public $mysql_password = 'uptc2021';
       public $pdo;
 
-      public function conexionBD(){
-       try{
-        $pdo = new PDO('mysql:host=localhost;dbname=simulador', $this->mysql_user, $this->mysql_password);
-      }catch(PDOException $ex){
-             die('Unable to connect');
-       } 
-       return $pdo;
-       }
+      public function conexionBD() {
+          try {
+              $pdo = new PDO('mysql:host=localhost;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
+              // Establecer el modo de error PDO en excepción
+              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          } catch(PDOException $ex) {
+              die('Unable to connect');
+          }
+          return $pdo;
+      }
 
        public function simulacionesUsuario($user){
             $pdo = $this->conexionBD();
