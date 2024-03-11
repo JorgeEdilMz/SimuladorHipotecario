@@ -1,5 +1,3 @@
-Dockerfile 1
-
 FROM php:7.4-apache
 
 # Instala el cliente de MySQL
