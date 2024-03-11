@@ -8,15 +8,16 @@
 
       public function conexionBD() {
           try {
-              $pdo = new PDO('mysql:host=mi-mysql;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
+              echo "Intentando conectar a MySQL...<br>";
+              $this->pdo = new PDO('mysql:host=mi-mysql;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
+              echo "Conexión exitosa a MySQL!<br>";
               // Establecer el modo de error PDO en excepción
-              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           } catch(PDOException $ex) {
-              die('Unable to connect');
+              die('Error al conectar a MySQL: ' . $ex->getMessage());
           }
-          return $pdo;
+          return $this->pdo;
       }
-
        public function simulacionesUsuario($user){
             $pdo = $this->conexionBD();
             $stmt = $pdo->prepare('SELECT * FROM simulacion where id_usuario = ?');
