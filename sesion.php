@@ -12,6 +12,9 @@
           public function conexionBD() {
               try {
                   echo "Intentando conectar a MySQL...<br>";
+                  $sslOptions = [
+                    PDO::MYSQL_ATTR_SSL_CIPHER => 'TLS_AES_256_GCM_SHA384'
+                ];
                   $dsn = "mysql:host={$this->mysql_host};port={$this->mysql_port};dbname={$this->mysql_database}";
                   echo "DSN: {$dsn}<br>"; // Imprimir DSN
                   $this->pdo = new PDO($dsn, $this->mysql_user, $this->mysql_password);
