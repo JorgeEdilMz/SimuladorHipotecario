@@ -6,7 +6,7 @@ services:
     ports:
       - "9080:80"
     volumes:
-      - ./php:/var/www/html
+      - :/usr/local/apache2/htdocs/
     depends_on:
       - mysql
     networks:
