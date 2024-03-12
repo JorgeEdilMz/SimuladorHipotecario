@@ -2,7 +2,7 @@
 		
      class sesion{
 
-          public $mysql_host = 'mysql';
+          public $mysql_host = 'mysql-1';
           public $mysql_port = '3307';
           public $mysql_database = 'simulador';
           public $mysql_user = 'root';
