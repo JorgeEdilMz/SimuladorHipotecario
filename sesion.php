@@ -3,7 +3,7 @@
      class sesion{
 
           public $mysql_host = '127.0.0.1';
-          public $mysql_port = '3307';
+          public $mysql_port = '3306';
           public $mysql_database = 'simulador';
           public $mysql_user = 'root';
           public $mysql_password = 'uptc2021';
