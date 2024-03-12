@@ -17,7 +17,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: uptc2021
       MYSQL_DATABASE: simulador
-      MYSQL_USER: root
     volumes:
       - ./mysql:/var/lib/mysql
     ports:
