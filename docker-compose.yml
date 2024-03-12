@@ -20,7 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: uptc2021
       MYSQL_DATABASE: simulador
     ports:
-      - "3307:3306"
+      - "3306:3306"
     networks:
       - my_network
 

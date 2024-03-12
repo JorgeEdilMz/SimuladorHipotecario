@@ -2,27 +2,27 @@
 		
      class sesion{
 
-          public $mysql_host = 'mysql-1';
-          public $mysql_port = '3307';
+          public $mysql_host = '127.0.0.1';
+          public $mysql_port = '3306';
           public $mysql_database = 'simulador';
           public $mysql_user = 'root';
           public $mysql_password = 'uptc2021';
           public $pdo;
-
+          
           public function conexionBD() {
-          try {
-               echo "Intentando conectar a MySQL...<br>";
-               $dsn = "mysql:host={$this->mysql_host};port={$this->mysql_port};dbname={$this->mysql_database}";
-               echo "DSN: {$dsn}<br>"; // Imprimir DSN
-               $this->pdo = new PDO($dsn, $this->mysql_user, $this->mysql_password);
-               echo "Conexión exitosa a MySQL!<br>";
-               // Establecer el modo de error PDO en excepción
-               $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          } catch(PDOException $ex) {
-               echo 'Error al conectar a MySQL: ' . $ex->getMessage();
-               die();
-          }
-          return $this->pdo;
+              try {
+                  echo "Intentando conectar a MySQL...<br>";
+                  $dsn = "mysql:host={$this->mysql_host};port={$this->mysql_port};dbname={$this->mysql_database}";
+                  echo "DSN: {$dsn}<br>"; // Imprimir DSN
+                  $this->pdo = new PDO($dsn, $this->mysql_user, $this->mysql_password);
+                  echo "Conexión exitosa a MySQL!<br>";
+                  // Establecer el modo de error PDO en excepción
+                  $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+              } catch(PDOException $ex) {
+                  echo 'Error al conectar a MySQL: ' . $ex->getMessage();
+                  die();
+              }
+              return $this->pdo;
           }
 
 
