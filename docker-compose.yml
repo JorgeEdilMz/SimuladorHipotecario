@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   php-apache:
-    image: php:my-apache2
+    image: my-apache2
     ports:
       - "9080:80"
     volumes:
