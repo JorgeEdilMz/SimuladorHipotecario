@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   php-apache:
-    image: php:7.4-apache
+    image: php:my-apache2
     ports:
       - "9080:80"
     volumes:
@@ -13,7 +13,7 @@ services:
       - my_network
 
   mysql:
-    image: mysql:latest
+    image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: uptc2021
       MYSQL_DATABASE: simulador
