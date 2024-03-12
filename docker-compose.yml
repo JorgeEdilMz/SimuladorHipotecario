@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  php-apache:
+    image: php:7.4-apache
+    ports:
+      - "9080:80"
+    volumes:
+      - ./php:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - my_network
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: uptc2021
+      MYSQL_DATABASE: simulador
+      MYSQL_USER: root
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
