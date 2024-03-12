@@ -1,41 +1,41 @@
-    <?php
-	
-    	require_once('sesion.php');
-      if(!isset($_SESSION)) 
-      { 
-        session_start(); 
-      } 
-      if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      $sesion = new sesion();  
-      $myusername = $_POST['username'];
-      $mypassword = $_POST['password'];
-      if (empty($myusername) or empty($mypassword)){
-          phpAlert("Por favor digite el usuario y password para ingresar!");
-      }else{ 
-       // If result matched $myusername and $mypassword, table row must be 1 row
-      $count = $sesion->validarUsuario($myusername,$mypassword);
-      if($count == 1) {
-         $_SESSION['login_user'] = $myusername;
-         $idtipo = $sesion->getTipoUsuario($myusername);
-         $_SESSION['user_type'] = $idtipo;
-         $nombres=$sesion->getNombresApellidos($myusername);
-         $_SESSION['user_names'] = $nombres;
-         $idUser = $sesion->getIdUsuario($myusername);
-         $_SESSION['user_id'] = $idUser;
-         header("Location: menuppal.php");
-      }else {
-        phpAlert("Usuario y/o password incorrecto. Por favor validelo!");
-         //$error = "Your Login Name or Password is invalid";
-      }
-    }
-   }
+	<?php
+	require_once('sesion.php');
 
-   function phpAlert($msg) {
-    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
-    }
+	// Verificar si la sesión no está iniciada y luego iniciarla
+	if (!isset($_SESSION)) {
+		session_start();
+	}
 
-    ?>
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		// username and password sent from form 
+		$sesion = new sesion();  
+		$myusername = $_POST['username'];
+		$mypassword = $_POST['password'];
+		if (empty($myusername) or empty($mypassword)){
+			phpAlert("Por favor digite el usuario y password para ingresar!");
+		} else { 
+			// If result matched $myusername and $mypassword, table row must be 1 row
+			$count = $sesion->validarUsuario($myusername, $mypassword);
+			if ($count == 1) {
+				$_SESSION['login_user'] = $myusername;
+				$idtipo = $sesion->getTipoUsuario($myusername);
+				$_SESSION['user_type'] = $idtipo;
+				$nombres = $sesion->getNombresApellidos($myusername);
+				$_SESSION['user_names'] = $nombres;
+				$idUser = $sesion->getIdUsuario($myusername);
+				$_SESSION['user_id'] = $idUser;
+				header("Location: menuppal.php");
+				exit; // Terminar el script después de redirigir
+			} else {
+				phpAlert("Usuario y/o password incorrecto. Por favor validelo!");
+			}
+		}
+	}
+
+	function phpAlert($msg) {
+		echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+	}
+	?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
