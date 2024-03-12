@@ -6,7 +6,7 @@ services:
     ports:
       - "9080:80"
     volumes:
-      - ./public_html/:/var/www/html/
+      - ./:/var/www/html
     depends_on:
       - mysql
     networks:
@@ -17,8 +17,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: uptc2021
       MYSQL_DATABASE: simulador
-    volumes:
-      - ./mysql:/var/lib/mysql
+      MYSQL_USER: root
     ports:
       - "3307:3306"
     networks:
