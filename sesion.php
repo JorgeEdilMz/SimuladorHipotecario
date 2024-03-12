@@ -9,7 +9,7 @@
           public function conexionBD() {
                try {
                     echo "Intentando conectar a MySQL...<br>";
-                    $this->pdo = new PDO('mysql:host=127.0.0.1;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
+                    $this->pdo = new PDO('mysql:host=localhost;port=3307;dbname=simulador', $this->mysql_user, $this->mysql_password);
                     echo "Conexión exitosa a MySQL!<br>";
                     // Establecer el modo de error PDO en excepción
                     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
