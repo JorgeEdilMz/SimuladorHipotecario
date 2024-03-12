@@ -2,7 +2,9 @@ version: '3.7'
 
 services:
   php-apache:
-    image: php:7.4-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "9080:80"
     volumes:
